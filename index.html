@@ -36,7 +36,7 @@
 			for (var i = 0; i < paths.length; i++)
 			{
 				var array = paths[i].split('/');
-				var name = array[array.length - 1].replace('.mp3', '').replace('_', ' ');
+				var name = array[array.length - 1].replace('.mp3', '').replaceAll('_', ' ');
 				$('article ul').append('<li><button data-path="' + paths[i] + '" onclick="onplayer(this)">' + name + '</button></li>');
 			}
 		});
@@ -44,7 +44,7 @@
 		{
 			var audio = document.getElementById('audio');
 			audio.pause();
-			
+
 			var music = $(element).data('path');
 			$('audio source').attr('src', music);
 
