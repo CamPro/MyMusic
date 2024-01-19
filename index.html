@@ -18,9 +18,14 @@
 <body>
 	<section id="musicplayer">
 		<audio controls autoplay>
-			<source src="musics\giai-dieu-mo-dau-vui-ve.mp3" type="audio/mpeg">
+			<source src="musics/giai-dieu-mo-dau-vui-ve.mp3" type="audio/mpeg">
 		</audio>
 	</section>
+	<article>
+		<ul>
+			
+		</ul>
+	</article>
 	<script src="public/js/jquery-3.7.1.min.js"></script>
 	<script type="text/javascript">
 		var url = new URL(window.location.href);
@@ -31,9 +36,15 @@
 			var paths = data.split('\n');
 			for (var i = 0; i < paths.length; i++)
 			{
-				$('audio').append('<source src="' + paths[i] + '" type="audio/mpeg">');
+				var array = paths[i].split('/');
+				var name = array[array.length - 1].replace('.mp3', '').replace('_', ' ');
+				$('article ul').append('<li data-path="' + paths[i] + '" onclick="onplayer(this)">' + name + '</li>');
 			}
 		});
+		function onplayer(music)
+		{
+			$('audio source').attr('src', music);
+		}
 	</script>
 </body>
 </html>
