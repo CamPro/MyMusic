@@ -23,7 +23,6 @@
 	</section>
 	<article>
 		<ul>
-			
 		</ul>
 	</article>
 	<script src="public/js/jquery-3.7.1.min.js"></script>
@@ -38,11 +37,12 @@
 			{
 				var array = paths[i].split('/');
 				var name = array[array.length - 1].replace('.mp3', '').replace('_', ' ');
-				$('article ul').append('<li data-path="' + paths[i] + '" onclick="onplayer(this)">' + name + '</li>');
+				$('article ul').append('<li><button data-path="' + paths[i] + '" onclick="onplayer(this)">' + name + '</button></li>');
 			}
 		});
-		function onplayer(music)
+		function onplayer(element)
 		{
+			var music = $(element).data('path');
 			$('audio source').attr('src', music);
 		}
 	</script>
