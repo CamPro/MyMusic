@@ -5,12 +5,25 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-	<link rel="stylesheet" href="./styles/style.css" />
 	<title>MY MUSIC PLAYER</title>
 </head>
 <body>
-	<section id="">
-		
+	<section id="musicplayer">
+
 	</section>
+	<script src="public/js/jquery-3.7.1.min.js"></script>
+	<script type="text/javascript">
+		var url = new URL(window.location.href);
+
+		fetch(url.origin + '/MyMusic/music.json')
+		.then(response => response.text())
+		.then(data => {
+			var objs = JSON.parse(data);
+			for (var i = 0; i < objs.length; i++)
+			{
+				console.log(objs[i]);
+			}
+		});
+	</script>
 </body>
 </html>
